@@ -1,8 +1,8 @@
+import { useProducts } from "../../contexts/product-context";
 import CatalogoMeep from "../../components/catalogo-meep";
-import { useFetchProducts } from "../../hooks/fetch-products";
 
 export function Home() {
-  const { products, loading } = useFetchProducts();
+  const { products, loading } = useProducts();
 
   if (loading) {
     return <div>Carregando...</div>;

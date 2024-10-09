@@ -3,12 +3,15 @@ import { Home } from "./pages/home";
 import { Cart } from "./pages/cart";
 import { Layout } from "./components/layout";
 import { CartProvider } from "./contexts/cart-context";
-
+import { ProductProvider } from "./contexts/product-context";
+import { ProductDetails } from "./pages/product";
 const router = createBrowserRouter([
   {
     element: (
       <CartProvider>
-        <Layout />
+        <ProductProvider>
+          <Layout />
+        </ProductProvider>
       </CartProvider>
     ),
     children: [
@@ -17,6 +20,7 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       { path: "/cart", element: <Cart /> },
+      { path: "/product/:id", element: <ProductDetails /> },
     ],
   },
 ]);

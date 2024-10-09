@@ -1,7 +1,7 @@
 import React from "react";
 import { Product } from "../../../../types/product";
 import { useCartContext } from "../../../contexts/cart-context";
-import CartIcon from "../../icons/cart-icon";
+import CartIcon from "../icons/cart-icon";
 
 interface AddToCartButtonProps {
   product: Product;
@@ -14,7 +14,8 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({
 }) => {
   const { addToCart } = useCartContext();
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
     addToCart(product);
   };
 
