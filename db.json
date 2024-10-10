@@ -5,42 +5,42 @@
       "name": "Pulseira RFID para Pagamento",
       "price": 49.99,
       "description": "Pulseira prática para pagamentos rápidos e acesso ao evento.",
-      "image": "https://via.placeholder.com/600x400"
+      "image": "/images/pulseira.png"
     },
     {
       "id": 2,
       "name": "Copo Inteligente com Chip",
       "price": 19.99,
       "description": "Copo reutilizável com tecnologia de pagamento integrada.",
-      "image": "https://via.placeholder.com/600x400"
+      "image": "/images/copo.png"
     },
     {
       "id": 3,
       "name": "Camiseta Personalizada",
       "price": 29.99,
       "description": "Camiseta exclusiva com estampas do evento.",
-      "image": "https://via.placeholder.com/600x400"
+      "image": "/images/camiseta.png"
     },
     {
       "id": 4,
       "name": "Chaveiro Luminoso",
       "price": 9.99,
       "description": "Chaveiro que brilha no escuro, ideal para eventos noturnos.",
-      "image": "https://via.placeholder.com/600x400"
+      "image": "/images/chaveiro.png"
     },
     {
       "id": 5,
       "name": "Capa de Chuva Portátil",
       "price": 14.99,
       "description": "Capa de chuva dobrável para eventos ao ar livre.",
-      "image": "https://via.placeholder.com/600x400"
+      "image": "/images/capa.png"
     },
     {
       "id": 6,
       "name": "Bolsinha para Acessórios",
       "price": 24.99,
       "description": "Bolsinha compacta e prática para carregar seus itens essenciais durante o evento.",
-      "image": "https://via.placeholder.com/600x400"
+      "image": "/images/bolsa.png"
     }
   ]
 }

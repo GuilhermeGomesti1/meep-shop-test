@@ -1,5 +1,7 @@
 import { useProducts } from "../../contexts/product-context";
 import CatalogoMeep from "../../components/catalogo-meep";
+import BackToTopButton from "../../components/common/buttons/go-top";
+import CartSummary from "../../components/common/cart-summary";
 
 export function Home() {
   const { products, loading } = useProducts();
@@ -10,10 +12,9 @@ export function Home() {
 
   return (
     <div>
-      <h1 className="text-center text-3xl sm:text-2xl md:text-4xl font-bold mt-8 text-[#36008F]">
-        Bem-vindo!
-      </h1>
+      <BackToTopButton />
       <CatalogoMeep products={products} />
+      <CartSummary />
     </div>
   );
 }

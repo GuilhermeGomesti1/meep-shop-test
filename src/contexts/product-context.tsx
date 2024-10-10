@@ -1,6 +1,7 @@
 import React, { createContext, useContext } from "react";
 import { Product } from "../../types/product";
 import { useFetchProducts } from "../hooks/fetch-products";
+
 interface ProductContextType {
   products: Product[];
   loading: boolean;

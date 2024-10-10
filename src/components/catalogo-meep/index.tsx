@@ -1,7 +1,6 @@
 import React from "react";
 import { Product } from "../../../types/product";
 import ScrollReveal from "../common/scroll-reveal";
-import AddToCartButton from "../common/buttons/add-to-cart";
 import { useNavigate } from "react-router-dom";
 
 interface Props {
@@ -18,38 +17,40 @@ const CatalogoMeep: React.FC<Props> = ({ products }) => {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold text-center text-[#CF0A8B] mb-12">
-        Nossos Produtos
+      <h2 className="text-2xl font-bold text-center text-[#CF0A8B] mb-8 mt-2">
+        CATÁLOGO
       </h2>
       <ScrollReveal
         selector=".animated-item"
         options={{ duration: 1000, distance: "10px", easing: "ease-in-out" }}
       />
-      <div className="max-w-screen-xl mx-auto mb-4 z-0">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+      <div className="max-w-screen-xl mx-auto mb-4 z-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 ">
           {products.map((product) => (
             <div
               className="animated-item"
               key={product.id}
               onClick={() => {
-                console.log(`Navegando para o produto com ID: ${product.id}`);
                 navigate(`/product/${product.id}`);
               }}
             >
-              <div className="bg-white border border-gray-300 rounded-lg overflow-hidden transition-colors duration-500 ease-in-out hover:bg-gray-200 flex p-4 cursor-pointer">
+              <div className="bg-white border min-h-[150px]  sm:min-h-[200px] border-gray-300 rounded-lg overflow-hidden transition-colors duration-500 ease-in-out hover:bg-gray-200 flex p-4 cursor-pointer">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-1/3 h-auto object-cover"
+                  className="w-1/3 h-auto object-cover border-2 border-[#cf0a8a26] rounded-[6px] min-w-[160px] "
                 />
-                <div className="flex flex-col justify-center items-center w-2/3 pl-4">
-                  <h3 className="text-base sm:text-lg font-semibold text-[#36008F] text-center overflow-hidden text-ellipsis">
+                <div className="flex flex-col justify-center items-center w-2/3 pl-4 text-left">
+                  <h3 className="w-full sm:w-2/3 text-base sm:text-lg font-semibold text-[#36008F] text-justify overflow-hidden text-ellipsis ">
                     {product.name}
                   </h3>
-                  <p className="text-base sm:text-lg font-bold text-[#CF0A8B] text-center mb-2">
+                  <p className="w-full sm:w-2/3 text-left text-base sm:text-lg  text-[#CF0A8B] mb-4 transition-opacity duration-1000 ease-in-out opacity-20 animate-pulse hover:opacity-50">
                     Preço: R${product.price.toFixed(2)}
                   </p>
-                  <AddToCartButton product={product} />
+
+                  <p className="flex w-[100%] sm:w-[70%] justify-center text-center items-center bg-[#CF0A8B] text-white py-2 px-4 rounded-l-full rounded-r-full h-[40px] transition-all duration-300 transform hover:scale-105 text-sm sm:text-base">
+                    Saiba mais
+                  </p>
                 </div>
               </div>
             </div>

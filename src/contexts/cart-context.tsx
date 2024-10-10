@@ -1,24 +1,31 @@
 import React, { createContext, useContext, ReactNode } from "react";
 import { useCart } from "../hooks/use-cart";
-import { Product } from "../../types/product";
-
-interface CartContextType {
-  cartItems: Product[];
-  addToCart: (product: Product) => void;
-  removeFromCart: (productId: number) => void;
-  clearCart: () => void;
-}
+import { CartContextType } from "../../types/cart-types";
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const { cartItems, addToCart, removeFromCart, clearCart } = useCart();
+  const {
+    cartItems,
+    addToCart,
+    decreaseQuantity,
+    increaseQuantity,
+    removeFromCart,
+    clearCart,
+  } = useCart();
 
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, removeFromCart, clearCart }}
+      value={{
+        cartItems,
+        addToCart,
+        increaseQuantity,
+        decreaseQuantity,
+        removeFromCart,
+        clearCart,
+      }}
     >
       {children}
     </CartContext.Provider>
