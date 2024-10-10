@@ -9,11 +9,21 @@ export function ProductDetails() {
   const { products } = useProducts();
   const numericId = Number(id);
   const product = products.find((p) => Number(p.id) === numericId);
-
   const [quantity, setQuantity] = useState<number>(1);
+  const [observation, setObservation] = useState<string>("");
 
   const handleQuantityChange = (newQuantity: number) => {
     setQuantity(newQuantity);
+  };
+
+  const handleObservationChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    setObservation(event.target.value);
+  };
+
+  const handleAfterAdd = () => {
+    setObservation("");
   };
 
   if (!product) {
@@ -35,13 +45,25 @@ export function ProductDetails() {
           Descrição: {product.description}
         </p>
         <p className="text-lg text-left">Preço: R${product.price.toFixed(2)}</p>
+        <textarea
+          value={observation}
+          onChange={handleObservationChange}
+          placeholder="Adicione uma observação (opcional)"
+          className="w-full p-2 mt-4 border border-gray-300 rounded-lg"
+          rows={3}
+        />
       </div>
       <div className="flex items-center justify-center space-x-8">
         <QuantitySelector
           initialQuantity={1}
           onQuantityChange={handleQuantityChange}
         />
-        <AddToCartButton product={product} quantity={quantity} />{" "}
+        <AddToCartButton
+          product={product}
+          quantity={quantity}
+          observation={observation}
+          onAfterAdd={handleAfterAdd}
+        />{" "}
       </div>
     </div>
   );

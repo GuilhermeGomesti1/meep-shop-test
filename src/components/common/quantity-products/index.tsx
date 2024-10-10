@@ -14,18 +14,18 @@ const QuantitySelector: React.FC<QuantitySelectorProps> = ({
   const handleIncrease = () => {
     setQuantity((prev) => {
       const newQuantity = prev + 1;
-      onQuantityChange(newQuantity);
       return newQuantity;
     });
+    onQuantityChange(quantity + 1);
   };
 
   const handleDecrease = () => {
     if (quantity > 1) {
       setQuantity((prev) => {
         const newQuantity = prev - 1;
-        onQuantityChange(newQuantity);
         return newQuantity;
       });
+      onQuantityChange(quantity - 1);
     }
   };
 

@@ -3,20 +3,35 @@ import { Product } from "../../types/product";
 
 export const useCart = () => {
   const [cartItems, setCartItems] = useState<Product[]>([]);
-  const addToCart = (product: Product, quantity: number) => {
+
+  const addToCart = (
+    product: Product,
+    quantity: number,
+    observation?: string
+  ) => {
+    console.log("Dados enviados:", {
+      product,
+      quantity,
+      observation,
+    });
     setCartItems((prevItems) => {
       const existingItem = prevItems.find((item) => item.id === product.id);
       if (existingItem) {
         return prevItems.map((item) =>
           item.id === product.id
-            ? { ...item, quantity: (item.quantity || 0) + quantity }
+            ? {
+                ...item,
+                quantity: (item.quantity || 0) + quantity,
+                observation,
+              }
             : item
         );
       } else {
-        return [...prevItems, { ...product, quantity }];
+        return [...prevItems, { ...product, quantity, observation }];
       }
     });
   };
+
   const increaseQuantity = (productId: number) => {
     setCartItems((prevItems) =>
       prevItems.map((item) =>
