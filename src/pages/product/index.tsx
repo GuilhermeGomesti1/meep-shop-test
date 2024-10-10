@@ -3,6 +3,7 @@ import { useProducts } from "../../contexts/product-context";
 import AddToCartButton from "../../components/common/buttons/add-to-cart";
 import QuantitySelector from "../../components/common/quantity-products";
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 export function ProductDetails() {
   const { id } = useParams<{ id: string }>();
@@ -24,6 +25,7 @@ export function ProductDetails() {
 
   const handleAfterAdd = () => {
     setObservation("");
+    setQuantity(1);
   };
 
   if (!product) {
@@ -32,15 +34,24 @@ export function ProductDetails() {
 
   return (
     <div className="p-6 ">
-      <h1 className="text-2xl text-center font-bold text-[#CF0A8B] mb-4">
+      <h1 className="text-2xl text-center font-bold text-[#CF0A8B] ">
         {product.name}
       </h1>
-      <img
+      <motion.img
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.3, duration: 0.5 }}
         src={product.image}
         alt={product.name}
-        className="w-[90%] sm:w-[50%] h-auto mb-4 mx-auto"
+        className="w-[90%] sm:w-[50%] mb-4 mx-auto"
       />
-      <div className="max-w-2xl mx-auto">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4, duration: 0.5 }}
+        className="max-w-2xl mx-auto "
+      >
+        {" "}
         <p className="text-base text-left mb-2">
           Descrição: {product.description}
         </p>
@@ -52,7 +63,7 @@ export function ProductDetails() {
           className="w-full p-2 mt-4 border border-gray-300 rounded-lg"
           rows={3}
         />
-      </div>
+      </motion.div>{" "}
       <div className="flex items-center justify-center space-x-8">
         <QuantitySelector
           initialQuantity={1}
