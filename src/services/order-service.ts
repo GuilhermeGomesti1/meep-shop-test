@@ -2,7 +2,6 @@ import { Product } from "../../types/product";
 
 interface OrderData {
   items: Product[];
-  totalPrice: number;
 }
 
 export const createOrder = async (orderData: OrderData): Promise<void> => {

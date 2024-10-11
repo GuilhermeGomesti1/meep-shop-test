@@ -4,13 +4,11 @@ import { Product } from "../../../../types/product";
 
 interface OrderSubmitButtonProps {
   products: Product[];
-  totalPrice: number;
   clearCart: () => void;
 }
 
 const OrderSubmitButton: React.FC<OrderSubmitButtonProps> = ({
   products,
-  totalPrice,
   clearCart,
 }) => {
   const [loading, setLoading] = useState(false);
@@ -20,14 +18,12 @@ const OrderSubmitButton: React.FC<OrderSubmitButtonProps> = ({
   const handleOrderSubmit = async () => {
     setLoading(true);
     setError(null);
-
     const orderData = {
       items: products.map((product) => ({
         ...product,
         quantity: product.quantity ?? 1,
-        total: (product.price * (product.quantity ?? 1)).toFixed(2),
+        total: product.price * (product.quantity ?? 1),
       })),
-      totalPrice: totalPrice,
     };
     try {
       await createOrder(orderData);

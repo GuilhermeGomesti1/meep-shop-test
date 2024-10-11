@@ -71,7 +71,6 @@ export function Cart() {
             ...product,
             quantity: count,
           }))}
-          totalPrice={totalPrice}
           clearCart={clearCart}
         />
         <button
