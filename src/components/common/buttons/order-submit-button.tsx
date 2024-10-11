@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { createOrder } from "../../../services/order-service";
 import { Product } from "../../../../types/product";
+import { useNavigate } from "react-router-dom";
 
 interface OrderSubmitButtonProps {
   products: Product[];
@@ -12,9 +13,8 @@ const OrderSubmitButton: React.FC<OrderSubmitButtonProps> = ({
   clearCart,
 }) => {
   const [loading, setLoading] = useState(false);
-  const [orderSuccess, setOrderSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
+  const navigate = useNavigate();
   const handleOrderSubmit = async () => {
     setLoading(true);
     setError(null);
@@ -28,9 +28,7 @@ const OrderSubmitButton: React.FC<OrderSubmitButtonProps> = ({
     try {
       await createOrder(orderData);
       clearCart();
-      setOrderSuccess(true);
-
-      setTimeout(() => setOrderSuccess(false), 2000);
+      navigate("/");
     } catch (err) {
       setError("Erro ao enviar o pedido. Tente novamente.");
     } finally {
@@ -41,15 +39,13 @@ const OrderSubmitButton: React.FC<OrderSubmitButtonProps> = ({
   return (
     <div>
       <button
-        className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
+        className="bg-[#CF0A8B] text-white px-4 py-2 rounded mt-4"
         onClick={handleOrderSubmit}
         disabled={loading}
       >
         {loading ? "Enviando..." : "Finalizar Pedido"}
       </button>
-      {orderSuccess && (
-        <p className="text-green-500">Pedido enviado com sucesso!</p>
-      )}
+
       {error && <p className="text-red-500">{error}</p>}
     </div>
   );
