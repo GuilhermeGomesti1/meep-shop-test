@@ -1,6 +1,7 @@
 import { useCartContext } from "../../contexts/cart-context";
 import QuantityInput from "../../components/common/quantity-input";
 import { Product } from "../../../types/product";
+import OrderSubmitButton from "../../components/common/buttons/order-submit-button";
 
 export function Cart() {
   const { cartItems, removeFromCart, clearCart } = useCartContext();
@@ -10,12 +11,11 @@ export function Cart() {
   }
 
   const productCounts: Record<number, { product: Product; count: number }> = {};
-
   cartItems.forEach((product) => {
     if (productCounts[product.id]) {
-      productCounts[product.id].count += 1;
+      productCounts[product.id].count += product.quantity || 1;
     } else {
-      productCounts[product.id] = { product, count: 1 };
+      productCounts[product.id] = { product, count: product.quantity || 1 };
     }
   });
 
@@ -63,7 +63,17 @@ export function Cart() {
             </li>
           ))}
         </ul>
-
+        <div className="mt-4 text-lg font-bold text-center">
+          Total: R${totalPrice.toFixed(2)}
+        </div>{" "}
+        <OrderSubmitButton
+          products={Object.values(productCounts).map(({ product, count }) => ({
+            ...product,
+            quantity: count,
+          }))}
+          totalPrice={totalPrice}
+          clearCart={clearCart}
+        />
         <button
           className="bg-red-500 text-white px-4 py-2 rounded mt-4"
           onClick={clearCart}
