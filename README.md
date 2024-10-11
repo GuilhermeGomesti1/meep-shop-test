@@ -10,6 +10,45 @@
 - JSON Server
 - @testing-library/react
 
+### Instruções para Execução do Projeto
+
+1. **Clone o repositório:**
+
+```bash
+git clone <https://github.com/GuilhermeGomesti1/meep-shop.git>
+cd meep-shop
+```
+
+2. **Instale as dependências:**:
+
+```bash
+npm install
+```
+
+3. **Inicie o servidor JSON (em um terminal separado):**:
+
+```bash
+npm run server
+```
+
+O servidor será iniciado na porta 3001 e utilizará o arquivo db.json como base de dados.
+
+4. **Inicie o front-end React**:
+
+```bash
+npm start
+```
+
+5. **Executar os testes:**:
+
+```bash
+npm test
+```
+
+### Simulação em Mobile:
+
+https://github.com/user-attachments/assets/f3084156-7474-4820-a49d-e2a21c5b62ac
+
 ### Estrutura do Diretório
 
 - **`public/`**: Contém arquivos estáticos e globais, incluindo imagens utilizadas na aplicação.
@@ -68,42 +107,3 @@
   - `product.d.ts`:Define a estrutura e os tipos de um produto no sistema.
 
 - **`db.json`**: Base de dados da API utilizada pelo JSON Server, lista os produtos e registra os pedidos feitos pelos usuários.
-
-### Instruções para Execução do Projeto
-
-1. **Clone o repositório:**
-
-```bash
-git clone <https://github.com/GuilhermeGomesti1/meep-shop.git>
-cd meep-shop
-```
-
-2. **Instale as dependências:**:
-
-```bash
-npm install
-```
-
-3. **Inicie o servidor JSON (em um terminal separado):**:
-
-```bash
-npm run server
-```
-
-O servidor será iniciado na porta 3001 e utilizará o arquivo db.json como base de dados.
-
-4. **Inicie o front-end React**:
-
-```bash
-npm start
-```
-
-5. **Executar os testes:**:
-
-```bash
-npm test
-```
-
-### Simulação em Mobile:
-
-https://github.com/user-attachments/assets/f3084156-7474-4820-a49d-e2a21c5b62ac
