@@ -102,3 +102,6 @@ npm start
 ```bash
 npm test
 ```
+### Simulação em Mobile:
+https://github.com/user-attachments/assets/f3084156-7474-4820-a49d-e2a21c5b62ac
+
