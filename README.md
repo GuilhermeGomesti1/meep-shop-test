@@ -38,21 +38,23 @@
   - **`header/`**: Componente de cabeçalho que exibe links de navegação e um ícone de carrinho com a quantidade de itens adicionados.
 
 - **`context/`**:
-- `cart-contexts.tsx`: Contexto de carrinho que fornece acesso global às funções e estado do carrinho de compras, permitindo que componentes possam adicionar, remover e ajustar quantidades de produtos no carrinho. Utiliza useCart para manipular o estado e expõe suas funcionalidades através do CartContext.
-- `product-context.tsx`: Contexto de produtos que fornece acesso global à lista de produtos e ao estado de carregamento dos mesmos.
+
+  - `cart-contexts.tsx`: Contexto de carrinho que fornece acesso global às funções e estado do carrinho de compras, permitindo que componentes possam adicionar, remover e ajustar quantidades de produtos no carrinho. Utiliza useCart para manipular o estado e expõe suas funcionalidades através do CartContext.
+  - `product-context.tsx`: Contexto de produtos que fornece acesso global à lista de produtos e ao estado de carregamento dos mesmos.
 
 - **`hooks`**:Hook customizado que busca a lista de produtos do serviço de API e gerencia o estado de carregamento.
-- `fetch-products.ts`: Hook que busca a lista de produtos do serviço de API e gerencia o estado de carregamento.
-- `use-cart.ts`: Hook usado em cart-context que gerencia o estado do carrinho de compras. Permite adicionar, aumentar, diminuir, remover itens e limpar o carrinho, além de salvar os itens no localStorage para persistência.
+
+  - `fetch-products.ts`: Hook que busca a lista de produtos do serviço de API e gerencia o estado de carregamento.
+  - `use-cart.ts`: Hook usado em cart-context que gerencia o estado do carrinho de compras. Permite adicionar, aumentar, diminuir, remover itens e limpar o carrinho, além de salvar os itens no localStorage para persistência.
 
 - **`pages`**:
-- `cart`: Página do carrinho.
-- `home`: Página Home.
-- `product`: Página do produto.
-
+  - `cart`: Página do carrinho.
+  - `home`: Página Home.
+  - `product`: Página do produto.
 - **`services/`**:
-- `order-service.ts`: Service responsável por enviar os dados do pedido para o servidor, utilizando uma requisição POST. Ele recebe uma estrutura de dados contendo os itens do pedido e trata a resposta do servidor, lançando erros adequados em caso de falha.
-- `product-service.ts`: Service responsável para buscar a lista de produtos API criada com JSON Server.
+
+  - `order-service.ts`: Service responsável por enviar os dados do pedido para o servidor, utilizando uma requisição POST. Ele recebe uma estrutura de dados contendo os itens do pedido e trata a resposta do servidor, lançando erros adequados em caso de falha.
+  - `product-service.ts`: Service responsável para buscar a lista de produtos API criada com JSON Server.
 
 - **`App.tsx`**: Configura o roteamento da aplicação, integrando os providers de contexto para gerenciar o carrinho e os produtos.
 
@@ -61,8 +63,9 @@
 - **`index.tsx`**: Configura a aplicação React, renderizando o componente principal e fornecendo a configuração de rotas usando o RouterProvider.
 
 - **`types`**:
-- `cart-types.ts`: Define a estrutura e os types do contexto do carrinho de compras
-- `product.d.ts`:Define a estrutura e os tipos de um produto no sistema.
+
+  - `cart-types.ts`: Define a estrutura e os types do contexto do carrinho de compras
+  - `product.d.ts`:Define a estrutura e os tipos de um produto no sistema.
 
 - **`db.json`**: Base de dados da API utilizada pelo JSON Server, lista os produtos e registra os pedidos feitos pelos usuários.
 
