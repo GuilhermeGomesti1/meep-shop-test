@@ -37,8 +37,6 @@
 
   - **`header/`**: Componente de cabeçalho que exibe links de navegação e um ícone de carrinho com a quantidade de itens adicionados.
 
-  - **`header/`**: Componente de cabeçalho que exibe links de navegação e um ícone de carrinho com a quantidade de itens adicionados.
-
 - **`context/`**:
 - `cart-contexts.tsx`: Contexto de carrinho que fornece acesso global às funções e estado do carrinho de compras, permitindo que componentes possam adicionar, remover e ajustar quantidades de produtos no carrinho. Utiliza useCart para manipular o estado e expõe suas funcionalidades através do CartContext.
 - `product-context.tsx`: Contexto de produtos que fornece acesso global à lista de produtos e ao estado de carregamento dos mesmos.
@@ -54,7 +52,7 @@
 
 - **`services/`**:
 - `order-service.ts`: Service responsável por enviar os dados do pedido para o servidor, utilizando uma requisição POST. Ele recebe uma estrutura de dados contendo os itens do pedido e trata a resposta do servidor, lançando erros adequados em caso de falha.
-- `radio-service.ts`: Service responsável para buscar a lista de produtos API criada com JSON Server.
+- `product-service.ts`: Service responsável para buscar a lista de produtos API criada com JSON Server.
 
 - **`App.tsx`**: Configura o roteamento da aplicação, integrando os providers de contexto para gerenciar o carrinho e os produtos.
 
@@ -102,6 +100,7 @@ npm start
 ```bash
 npm test
 ```
-### Simulação em Mobile:
-https://github.com/user-attachments/assets/f3084156-7474-4820-a49d-e2a21c5b62ac
 
+### Simulação em Mobile:
+
+https://github.com/user-attachments/assets/f3084156-7474-4820-a49d-e2a21c5b62ac
