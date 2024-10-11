@@ -32,8 +32,9 @@ const QuantitySelector: React.FC<QuantitySelectorProps> = ({
   return (
     <div className="flex items-center mt-4 space-x-2">
       <button
-        className="bg-[#CF0A8B] text-white px-4 py-2 rounded-full w-10 h-10 flex justify-center items-center"
+        className="bg-[#CF0A8B] text-white px-4 py-2 rounded-full w-10 h-10 flex justify-center items-center disabled:opacity-50 "
         onClick={handleDecrease}
+        disabled={quantity === 1}
       >
         -
       </button>

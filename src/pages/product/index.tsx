@@ -34,9 +34,14 @@ export function ProductDetails() {
 
   return (
     <div className="p-6 ">
-      <h1 className="text-2xl text-center font-bold text-[#CF0A8B] ">
+      <motion.h1
+        initial={{ x: -100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ type: "spring", stiffness: 100, damping: 20 }}
+        className="text-2xl font-bold text-center text-[#CF0A8B] mb-8 mt-2"
+      >
         {product.name}
-      </h1>
+      </motion.h1>
       <motion.img
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}

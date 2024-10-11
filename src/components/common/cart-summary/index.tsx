@@ -16,7 +16,7 @@ const CartSummary: React.FC = () => {
 
   return (
     <div className="p-4 border border-gray-300 rounded mt-4">
-      <h3 className="text-lg font-bold">Resumo do Carrinho</h3>
+      <h3 className="text-lg font-bold text-[#CF0A8B]">Resumo do Carrinho</h3>
       <ul className="mb-2">
         {cartItems.length > 0 ? (
           cartItems.map((product: Product) => (
@@ -33,13 +33,13 @@ const CartSummary: React.FC = () => {
           <li className="text-gray-500">O carrinho está vazio.</li>
         )}
       </ul>
-      <div className="flex justify-between font-bold">
+      <div className="flex justify-between ">
         <span>Total de Produtos:</span>
         <span>{totalItems}</span>
       </div>
-      <div className="flex justify-between font-bold">
+      <div className="flex justify-between ">
         <span>Preço Total:</span>
-        <span>R${totalPrice.toFixed(2)}</span>
+        <span className="text-[#CF0A8B]">R${totalPrice.toFixed(2)}</span>
       </div>
     </div>
   );
