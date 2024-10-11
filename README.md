@@ -1,46 +1,104 @@
-# Getting Started with Create React App
+# Teste Técnico
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Linguagens, Frameworks e Libs utilizadas:
 
-## Available Scripts
+- React
+- TypeScript
+- TailwindCSS
+- Framer Motion
+- Tailwind CSS
+- JSON Server
+- @testing-library/react
 
-In the project directory, you can run:
+### Estrutura do Diretório
 
-### `npm start`
+- **`public/`**: Contém arquivos estáticos e globais, incluindo imagens utilizadas na aplicação.
+- **`src/`**: Contém o código-fonte da aplicação.
+- **`components/`**: Componentes da aplicação.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  - **`cart-animation/`**: Componente de barra lateral que exibe as informações do carrinho ao adicionar um produto.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+  - **`catalago-meep/`**: Componente que exibe o catalogo de produtos.
 
-### `npm test`
+  - **`common/`**: Contém os componentes mais reutilizáveis.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  - **`buttons/`**:
+  - `add-to-cart.tsx`: Componente que adiciona um produto ao carrinho com seus dados mais quantidade e observação especificadas.
+  - `go-top.tsx/`: Componente que exibe um button para ir ao topo da tela após descer o catálogo em telas menores.
+  - `order-submit-button.tsx/`: Componente de botão que finaliza o pedido ao enviar os produtos selecionados. Exibe feedback visual de carregamento, erro ou sucesso, e limpa o carrinho após o pedido ser enviado com sucesso.
 
-### `npm run build`
+  - **`cart-summary/`**:Componente que exibe uma barra inferior com um resumo do carrinho, incluindo a lista de produtos, a quantidade total de itens e o preço total. Mostra uma mensagem quando o carrinho está vazio.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  - **`icons/`**: Icons reutilizáveis.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  - **`quantity-input`**: Componente para ajustar a quantidade de um produto na página de carrinho. Atualiza automaticamente o total do preço baseado na quantidade selecionada através dos botões de increase e decrease refletindo as mudanças no contexto do carrinho.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  - **`quantity-products`**: Componente que permite selecionar e ajustar a quantidade de um item com botões de aumentar e diminuir. Dispara uma função de callback sempre que a quantidade é alterada, permitindo que o valor seja passado para o carrinho somente após ser enviado, em vez de refletir diretamente no carrinho pelos botões. Ele captura a quantidade e a envia para o mesmo.
 
-### `npm run eject`
+  - **`header/`**: Componente de cabeçalho que exibe links de navegação e um ícone de carrinho com a quantidade de itens adicionados.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+  - **`header/`**: Componente de cabeçalho que exibe links de navegação e um ícone de carrinho com a quantidade de itens adicionados.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **`context/`**:
+- `cart-contexts.tsx`: Contexto de carrinho que fornece acesso global às funções e estado do carrinho de compras, permitindo que componentes possam adicionar, remover e ajustar quantidades de produtos no carrinho. Utiliza useCart para manipular o estado e expõe suas funcionalidades através do CartContext.
+- `product-context.tsx`: Contexto de produtos que fornece acesso global à lista de produtos e ao estado de carregamento dos mesmos.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- **`hooks`**:Hook customizado que busca a lista de produtos do serviço de API e gerencia o estado de carregamento.
+- `fetch-products.ts`: Hook que busca a lista de produtos do serviço de API e gerencia o estado de carregamento.
+- `use-cart.ts`: Hook usado em cart-context que gerencia o estado do carrinho de compras. Permite adicionar, aumentar, diminuir, remover itens e limpar o carrinho, além de salvar os itens no localStorage para persistência.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- **`pages`**:
+- `cart`: Página do carrinho.
+- `home`: Página Home.
+- `product`: Página do produto.
 
-## Learn More
+- **`services/`**:
+- `order-service.ts`: Service responsável por enviar os dados do pedido para o servidor, utilizando uma requisição POST. Ele recebe uma estrutura de dados contendo os itens do pedido e trata a resposta do servidor, lançando erros adequados em caso de falha.
+- `radio-service.ts`: Service responsável para buscar a lista de produtos API criada com JSON Server.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **`App.tsx`**: Configura o roteamento da aplicação, integrando os providers de contexto para gerenciar o carrinho e os produtos.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **`cart.test.tsx`**: Teste que veriica a funcionalidade do carrinho, assegurando que o preço total e a quantidade de produtos sejam calculados corretamente ao adicionar, aumentar, diminuir e remover itens.
+
+- **`index.tsx`**: Configura a aplicação React, renderizando o componente principal e fornecendo a configuração de rotas usando o RouterProvider.
+
+- **`types`**:
+- `cart-types.ts`: Define a estrutura e os types do contexto do carrinho de compras
+- `product.d.ts`:Define a estrutura e os tipos de um produto no sistema.
+
+- **`db.json`**: Base de dados da API utilizada pelo JSON Server, lista os produtos e registra os pedidos feitos pelos usuários.
+
+### Instruções para Execução do Projeto
+
+1. **Clone o repositório:**
+
+```bash
+git clone <URL_DO_REPOSITORIO>
+cd meep-shop
+```
+
+2. **Instale as dependências:**:
+
+```bash
+npm install
+```
+
+3. **Inicie o servidor JSON (em um terminal separado):**:
+
+```bash
+npm run server
+```
+
+O servidor será iniciado na porta 3001 e utilizará o arquivo db.json como base de dados.
+
+4. **Inicie o front-end React**:
+
+```bash
+npm start
+```
+
+5. **Executar os testes:**:
+
+```bash
+npm test
+```
