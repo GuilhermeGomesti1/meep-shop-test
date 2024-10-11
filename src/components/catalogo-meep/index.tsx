@@ -13,7 +13,14 @@ const CatalogoMeep: React.FC<Props> = ({ products }) => {
   console.log("Produtos recebidos no catálogo:", products);
 
   if (!products || products.length === 0) {
-    return <div>Nenhum produto encontrado.</div>;
+    return (
+      <div className="flex flex-col items-center justify-center h-screen">
+        <div className="text-xl mb-4">Nenhum produto encontrado.</div>
+        <div className="text-lg mb-4">
+          Favor verificar se o servidor está rodando.
+        </div>
+      </div>
+    );
   }
 
   return (

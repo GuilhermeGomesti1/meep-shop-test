@@ -3,12 +3,22 @@ import QuantityInput from "../../components/common/quantity-input";
 import { Product } from "../../../types/product";
 import OrderSubmitButton from "../../components/common/buttons/order-submit-button";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 export function Cart() {
   const { cartItems, removeFromCart, clearCart } = useCartContext();
-
   if (cartItems.length === 0) {
-    return <div>O carrinho está vazio</div>;
+    return (
+      <div className="flex flex-col items-center justify-center h-screen">
+        <div className="text-xl mb-4">O carrinho está vazio</div>
+        <Link
+          to="/"
+          className="bg-[#CF0A8B] text-white px-4 py-2  rounded-l-full rounded-r-full h-[40px] transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+        >
+          Ver Produtos
+        </Link>
+      </div>
+    );
   }
 
   const productCounts: Record<number, { product: Product; count: number }> = {};
