@@ -1,6 +1,6 @@
 import React from "react";
-import { useCartContext } from "../../../contexts/cart-context";
-import { Product } from "../../../../types/product";
+import { useCartContext } from "../../contexts/cart-context";
+import { Product } from "../../../types/product";
 
 const CartSummary: React.FC = () => {
   const { cartItems } = useCartContext();
