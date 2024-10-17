@@ -1,3 +1,4 @@
+import api from "../http/api";
 import { Product } from "../../types/product";
 
 interface OrderData {
@@ -6,15 +7,9 @@ interface OrderData {
 
 export const createOrder = async (orderData: OrderData): Promise<void> => {
   try {
-    const response = await fetch("http://localhost:3001/orders", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(orderData),
-    });
+    const response = await api.post("/orders", orderData);
 
-    if (!response.ok) {
+    if (response.status !== 200 && response.status !== 201) {
       throw new Error("Erro ao enviar o pedido");
     }
   } catch (error) {
