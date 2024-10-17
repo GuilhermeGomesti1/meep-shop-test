@@ -8,12 +8,13 @@ interface OrderData {
 export const createOrder = async (orderData: OrderData): Promise<void> => {
   try {
     const response = await api.post("/orders", orderData);
-
-    if (response.status !== 200 && response.status !== 201) {
-      throw new Error("Erro ao enviar o pedido");
-    }
-  } catch (error) {
-    console.error("Erro ao enviar o pedido:", error);
+    console.log(`Pedido criado com sucesso! Status: ${response.status}`);
+  } catch (error: any) {
+    console.error(
+      "Erro ao enviar o pedido:",
+      error.response?.status,
+      error.response?.data
+    );
     throw error;
   }
 };
