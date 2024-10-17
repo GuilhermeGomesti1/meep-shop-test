@@ -42,6 +42,7 @@ export const useCart = () => {
       return updatedItems;
     });
   };
+
   const increaseQuantity = (productId: number) => {
     setCartItems((prevItems) => {
       const updatedItems = prevItems.map((item) =>
@@ -67,6 +68,7 @@ export const useCart = () => {
       return updatedItems;
     });
   };
+
   const removeFromCart = (productId: number) => {
     setCartItems((prevItems) => {
       const updatedItems = prevItems.filter((item) => item.id !== productId);
@@ -74,6 +76,7 @@ export const useCart = () => {
       return updatedItems;
     });
   };
+
   const clearCart = () => {
     setCartItems([]);
     localStorage.removeItem("cartItems");
