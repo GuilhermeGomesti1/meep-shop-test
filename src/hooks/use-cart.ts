@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Product } from "../../types/product";
 
 export const useCart = () => {
@@ -6,9 +6,10 @@ export const useCart = () => {
     const savedCartItems = localStorage.getItem("cartItems");
     return savedCartItems ? JSON.parse(savedCartItems) : [];
   });
-  useEffect(() => {
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-  }, [cartItems]);
+
+  const updateLocalStorage = (items: Product[]) => {
+    localStorage.setItem("cartItems", JSON.stringify(items));
+  };
 
   const addToCart = (
     product: Product,
@@ -20,10 +21,12 @@ export const useCart = () => {
       quantity,
       observation,
     });
+
     setCartItems((prevItems) => {
       const existingItem = prevItems.find((item) => item.id === product.id);
+      let updatedItems;
       if (existingItem) {
-        return prevItems.map((item) =>
+        updatedItems = prevItems.map((item) =>
           item.id === product.id
             ? {
                 ...item,
@@ -33,39 +36,44 @@ export const useCart = () => {
             : item
         );
       } else {
-        return [...prevItems, { ...product, quantity, observation }];
+        updatedItems = [...prevItems, { ...product, quantity, observation }];
       }
+      updateLocalStorage(updatedItems);
+      return updatedItems;
     });
   };
-
   const increaseQuantity = (productId: number) => {
-    setCartItems((prevItems) =>
-      prevItems.map((item) =>
+    setCartItems((prevItems) => {
+      const updatedItems = prevItems.map((item) =>
         item.id === productId
           ? { ...item, quantity: (item.quantity || 0) + 1 }
           : item
-      )
-    );
+      );
+      updateLocalStorage(updatedItems);
+      return updatedItems;
+    });
   };
 
   const decreaseQuantity = (productId: number) => {
     setCartItems((prevItems) => {
-      return prevItems
+      const updatedItems = prevItems
         .map((item) =>
           item.id === productId && (item.quantity || 0) > 1
             ? { ...item, quantity: (item.quantity || 0) - 1 }
             : item
         )
         .filter((item) => item.quantity !== 0);
+      updateLocalStorage(updatedItems);
+      return updatedItems;
     });
   };
-
   const removeFromCart = (productId: number) => {
-    setCartItems((prevItems) =>
-      prevItems.filter((item) => item.id !== productId)
-    );
+    setCartItems((prevItems) => {
+      const updatedItems = prevItems.filter((item) => item.id !== productId);
+      updateLocalStorage(updatedItems);
+      return updatedItems;
+    });
   };
-
   const clearCart = () => {
     setCartItems([]);
     localStorage.removeItem("cartItems");

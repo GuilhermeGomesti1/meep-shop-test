@@ -1,24 +1,36 @@
 import React from "react";
-import { Product } from "../../../types/product";
 import ScrollReveal from "../common/scroll-reveal";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useFetchProducts } from "../../hooks/use-products";
 
-interface Props {
-  products: Product[];
-}
-
-const CatalogoMeep: React.FC<Props> = ({ products }) => {
+const CatalogProducts: React.FC = () => {
   const navigate = useNavigate();
-  console.log("Produtos recebidos no catálogo:", products);
+  const { data: products, isLoading, isError } = useFetchProducts();
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col items-center justify-center h-screen">
+        <div className="text-xl mb-4">Carregando produtos...</div>
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="flex flex-col items-center justify-center h-screen">
+        <div className="text-xl mb-4">Erro ao carregar produtos.</div>
+        <div className="text-lg mb-4">
+          Favor verificar se o servidor está rodando.
+        </div>
+      </div>
+    );
+  }
 
   if (!products || products.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center h-screen">
         <div className="text-xl mb-4">Nenhum produto encontrado.</div>
-        <div className="text-lg mb-4">
-          Favor verificar se o servidor está rodando.
-        </div>
       </div>
     );
   }
@@ -57,16 +69,15 @@ const CatalogoMeep: React.FC<Props> = ({ products }) => {
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-1/3 h-auto object-cover border-2 border-[#cf0a8a26] rounded-[6px] min-w-[160px] "
+                    className="w-1/3 h-auto object-cover border-2 border-[#cf0a8a26] rounded-[6px] min-w-[160px]"
                   />
                   <div className="flex flex-col justify-center items-center w-2/3 pl-4 text-left">
-                    <h3 className="w-full sm:w-2/3 text-base sm:text-lg font-semibold text-[#36008F] text-justify overflow-hidden text-ellipsis ">
+                    <h3 className="w-full sm:w-2/3 text-base sm:text-lg font-semibold text-[#36008F] text-justify overflow-hidden text-ellipsis">
                       {product.name}
                     </h3>
                     <p className="w-full sm:w-2/3 text-left text-base sm:text-lg  text-[#CF0A8B] mb-4 transition-opacity duration-1000 ease-in-out opacity-20 animate-pulse hover:opacity-50">
                       Preço: R${product.price.toFixed(2)}
                     </p>
-
                     <p className="flex w-[100%] sm:w-[70%] justify-center text-center items-center bg-[#CF0A8B] text-white py-2 px-4 rounded-l-full rounded-r-full h-[40px] transition-all duration-300 transform hover:scale-105 text-sm sm:text-base">
                       Saiba mais
                     </p>
@@ -81,4 +92,4 @@ const CatalogoMeep: React.FC<Props> = ({ products }) => {
   );
 };
 
-export default CatalogoMeep;
+export default CatalogProducts;

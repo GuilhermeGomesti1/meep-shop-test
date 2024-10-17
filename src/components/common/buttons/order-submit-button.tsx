@@ -62,7 +62,6 @@ const OrderSubmitButton: React.FC<OrderSubmitButtonProps> = ({
           transition={{ type: "spring", damping: 20 }}
           className="fixed right-0 top-4 h-auto w-80 bg-white shadow-2xl rounded-lg z-50 p-6 flex items-center justify-center gap-4 overflow-hidden"
         >
-          {/* Ícone de check para realçar o sucesso */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-8 w-8 text-green-500"
@@ -76,7 +75,6 @@ const OrderSubmitButton: React.FC<OrderSubmitButtonProps> = ({
             />
           </svg>
 
-          {/* Texto de sucesso */}
           <p className="text-[#CF0A8B] font-semibold text-lg">
             Pedido enviado com sucesso!
           </p>

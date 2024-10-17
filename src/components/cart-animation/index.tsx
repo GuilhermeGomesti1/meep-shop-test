@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCartContext } from "../../contexts/cart-context";
 import { Link } from "react-router-dom";
@@ -9,23 +9,21 @@ const CartSidebar: React.FC<{ isOpen: boolean; onClose: () => void }> = ({
 }) => {
   const { cartItems } = useCartContext();
 
-  const handleAutoClose = useCallback(() => {
+  const calculateTotal = (price: number, quantity: number) => {
+    return (price * quantity).toFixed(2);
+  };
+
+  const handleCartOpen = () => {
     const timer = setTimeout(() => {
       onClose();
     }, 5000);
 
     return () => clearTimeout(timer);
-  }, [onClose]);
-
-  useEffect(() => {
-    if (isOpen) {
-      handleAutoClose();
-    }
-  }, [isOpen, handleAutoClose]);
-
-  const calculateTotal = (price: number, quantity: number) => {
-    return (price * quantity).toFixed(2);
   };
+
+  if (isOpen) {
+    handleCartOpen();
+  }
 
   return (
     <AnimatePresence>

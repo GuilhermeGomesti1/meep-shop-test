@@ -3,16 +3,19 @@ import { Home } from "./pages/home";
 import { Cart } from "./pages/cart";
 import { Layout } from "./components/layout";
 import { CartProvider } from "./contexts/cart-context";
-import { ProductProvider } from "./contexts/product-context";
 import { ProductDetails } from "./pages/product";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
+
 const router = createBrowserRouter([
   {
     element: (
-      <CartProvider>
-        <ProductProvider>
+      <QueryClientProvider client={queryClient}>
+        <CartProvider>
           <Layout />
-        </ProductProvider>
-      </CartProvider>
+        </CartProvider>{" "}
+      </QueryClientProvider>
     ),
     children: [
       {
