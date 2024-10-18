@@ -16,8 +16,8 @@
 1. **Clone o repositório:**
 
 ```bash
-git clone <https://github.com/GuilhermeGomesti1/meep-shop.git>
-cd meep-shop
+git clone https://github.com/GuilhermeGomesti1/meep-shop-test.git
+cd meep-shop-test
 ```
 
 2. **Instale as dependências:**:
@@ -64,16 +64,17 @@ https://github.com/user-attachments/assets/f3084156-7474-4820-a49d-e2a21c5b62ac
 
   - **`common/`**: Contém os componentes mais reutilizáveis.
 
-  - **`buttons/`**:
-  - `add-to-cart.tsx`: Componente que adiciona um produto ao carrinho com seus dados mais quantidade e observação especificadas.
-  - `go-top.tsx/`: Componente que exibe um button para ir ao topo da tela após descer o catálogo em telas menores.
-  - `order-submit-button.tsx/`: Componente de botão que finaliza o pedido ao enviar os produtos selecionados. Exibe feedback visual de carregamento, erro ou sucesso, e limpa o carrinho após o pedido ser enviado com sucesso.
+    - **`buttons/`**:
 
-  - **`icons/`**: Icons reutilizáveis.
+    - `add-to-cart.tsx`: Componente que adiciona um produto ao carrinho com seus dados mais quantidade e observação especificadas.
+    - `go-top.tsx/`: Componente que exibe um button para ir ao topo da tela após descer o catálogo em telas menores.
+    - `order-submit-button.tsx/`: Componente de botão que finaliza o pedido ao enviar os produtos selecionados. Exibe feedback visual de carregamento, erro ou sucesso, e limpa o carrinho após o pedido ser enviado com sucesso.
 
-  - **`quantity-input`**: Componente para ajustar a quantidade de um produto na página de carrinho. Atualiza automaticamente o total do preço baseado na quantidade selecionada através dos botões de increase e decrease refletindo as mudanças no contexto do carrinho.
+    - **`icons/`**: Icons reutilizáveis.
 
-  - **`quantity-products`**: Componente que permite selecionar e ajustar a quantidade de um item com botões de aumentar e diminuir. Dispara uma função de callback sempre que a quantidade é alterada, permitindo que o valor seja passado para o carrinho somente após ser enviado, em vez de refletir diretamente no carrinho pelos botões. Ele captura a quantidade e a envia para o mesmo.
+    - **`quantity-input`**: Componente para ajustar a quantidade de um produto na página de carrinho. Atualiza automaticamente o total do preço baseado na quantidade selecionada através dos botões de increase e decrease refletindo as mudanças no contexto do carrinho.
+
+    - **`quantity-products`**: Componente que permite selecionar e ajustar a quantidade de um item com botões de aumentar e diminuir. Dispara uma função de callback sempre que a quantidade é alterada, permitindo que o valor seja passado para o carrinho somente após ser enviado, em vez de refletir diretamente no carrinho pelos botões. Ele captura a quantidade e a envia para o mesmo.
 
   - **`header/`**: Componente de cabeçalho que exibe links de navegação e um ícone de carrinho com a quantidade de itens adicionados.
 
@@ -89,9 +90,11 @@ https://github.com/user-attachments/assets/f3084156-7474-4820-a49d-e2a21c5b62ac
   - `use-product-by-id.ts`: Hook que busca um produto específico pelo ID. Utiliza React Query para otimizar as requisições e habilita a chamada somente se um ID válido for fornecido.
 
 - **`pages`**:
+
   - `cart`: Página do carrinho.
   - `home`: Página Home.
   - `product`: Página do produto.
+
 - **`services/`**:
 
   - `order-service.ts`: Service responsável por enviar os dados do pedido para o servidor, utilizando uma requisição POST. Ele recebe uma estrutura de dados contendo os itens do pedido e trata a resposta do servidor, lançando erros adequados em caso de falha.
