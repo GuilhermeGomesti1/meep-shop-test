@@ -6,7 +6,8 @@
 - TypeScript
 - TailwindCSS
 - Framer Motion
-- Tailwind CSS
+- Axios
+- React Query
 - JSON Server
 - @testing-library/react
 
@@ -57,6 +58,8 @@ https://github.com/user-attachments/assets/f3084156-7474-4820-a49d-e2a21c5b62ac
 
   - **`cart-animation/`**: Componente de barra lateral que exibe as informações do carrinho ao adicionar um produto.
 
+  - **`cart-summary/`**:Componente que exibe uma barra inferior com um resumo do carrinho, incluindo a lista de produtos, a quantidade total de itens e o preço total. Mostra uma mensagem quando o carrinho está vazio.
+
   - **`catalago-meep/`**: Componente que exibe o catalogo de produtos.
 
   - **`common/`**: Contém os componentes mais reutilizáveis.
@@ -65,8 +68,6 @@ https://github.com/user-attachments/assets/f3084156-7474-4820-a49d-e2a21c5b62ac
   - `add-to-cart.tsx`: Componente que adiciona um produto ao carrinho com seus dados mais quantidade e observação especificadas.
   - `go-top.tsx/`: Componente que exibe um button para ir ao topo da tela após descer o catálogo em telas menores.
   - `order-submit-button.tsx/`: Componente de botão que finaliza o pedido ao enviar os produtos selecionados. Exibe feedback visual de carregamento, erro ou sucesso, e limpa o carrinho após o pedido ser enviado com sucesso.
-
-  - **`cart-summary/`**:Componente que exibe uma barra inferior com um resumo do carrinho, incluindo a lista de produtos, a quantidade total de itens e o preço total. Mostra uma mensagem quando o carrinho está vazio.
 
   - **`icons/`**: Icons reutilizáveis.
 
@@ -79,12 +80,13 @@ https://github.com/user-attachments/assets/f3084156-7474-4820-a49d-e2a21c5b62ac
 - **`context/`**:
 
   - `cart-contexts.tsx`: Contexto de carrinho que fornece acesso global às funções e estado do carrinho de compras, permitindo que componentes possam adicionar, remover e ajustar quantidades de produtos no carrinho. Utiliza useCart para manipular o estado e expõe suas funcionalidades através do CartContext.
-  - `product-context.tsx`: Contexto de produtos que fornece acesso global à lista de produtos e ao estado de carregamento dos mesmos.
 
-- **`hooks`**:Hook customizado que busca a lista de produtos do serviço de API e gerencia o estado de carregamento.
+- **`hooks`**:
 
-  - `fetch-products.ts`: Hook que busca a lista de produtos do serviço de API e gerencia o estado de carregamento.
   - `use-cart.ts`: Hook usado em cart-context que gerencia o estado do carrinho de compras. Permite adicionar, aumentar, diminuir, remover itens e limpar o carrinho, além de salvar os itens no localStorage para persistência.
+  - `use-products.ts`: Hook customizado que busca a lista de produtos do serviço de API e gerencia o estado de carregamento.
+    Utiliza React Query para otimizar as requisições.
+  - `use-product-by-id.ts`: Hook que busca um produto específico pelo ID. Utiliza React Query para otimizar as requisições e habilita a chamada somente se um ID válido for fornecido.
 
 - **`pages`**:
   - `cart`: Página do carrinho.
