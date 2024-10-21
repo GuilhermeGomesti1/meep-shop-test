@@ -5,7 +5,7 @@ import QuantitySelector from "../../components/common/quantity-products";
 import AddToCartButton from "../../components/common/buttons/add-to-cart";
 import { useFetchProductById } from "../../hooks/use-product-by-id";
 
-export function ProductDetails() {
+export default function ProductDetails() {
   const { id } = useParams<{ id: string }>();
   const [quantity, setQuantity] = useState(1);
   const [observation, setObservation] = useState("");

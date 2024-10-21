@@ -5,7 +5,7 @@ import OrderSubmitButton from "../../components/common/buttons/order-submit-butt
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-export function Cart() {
+export default function Cart() {
   const { cartItems, removeFromCart, clearCart } = useCartContext();
   if (cartItems.length === 0) {
     return (
@@ -97,7 +97,7 @@ export function Cart() {
             clearCart={clearCart}
           />
           <button
-            className="bg-red-500 text-white px-4 py-2 rounded mt-4"
+            className="bg-red-500 text-white px-4 py-2 rounded mt-4 transition-all duration-300 hover:bg-[#fc2424]"
             onClick={clearCart}
           >
             Limpar Carrinho

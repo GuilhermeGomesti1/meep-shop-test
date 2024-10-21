@@ -6,7 +6,7 @@ import { useFetchProducts } from "../../hooks/use-products";
 
 const CatalogProducts: React.FC = () => {
   const navigate = useNavigate();
-  const { data: products, isLoading, isError, error } = useFetchProducts();
+  const { data: products, isLoading, isError } = useFetchProducts();
 
   if (isLoading) {
     return (
@@ -19,11 +19,6 @@ const CatalogProducts: React.FC = () => {
     return (
       <div className="flex flex-col items-center justify-center h-screen">
         <div className="text-xl mb-4">Erro ao carregar produtos.</div>
-        <div className="text-lg mb-4">
-          {error instanceof Error
-            ? error.message
-            : "Ocorreu um erro inesperado."}
-        </div>
       </div>
     );
   }

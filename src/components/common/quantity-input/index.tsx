@@ -30,7 +30,7 @@ const QuantityInput: React.FC<{ product: Product }> = ({ product }) => {
     <div className="flex-col items-center mt-0 space-x-2 mb-2 w-full relative">
       <div className="flex items-center">
         <button
-          className="bg-[#CF0A8B] text-white px-4 py-4 rounded-full w-10 h-10 flex justify-center items-center disabled:opacity-50"
+          className="bg-[#CF0A8B] text-white px-4 py-4 rounded-full w-10 h-10 flex justify-center items-center disabled:opacity-50 disabled:pointer-events-none transition-all duration-300 hover:bg-[#ff46be]"
           onClick={handleDecrease}
           disabled={quantity === 1}
         >
@@ -38,7 +38,7 @@ const QuantityInput: React.FC<{ product: Product }> = ({ product }) => {
         </button>
         <span className="mx-2 text-lg">{quantity}</span>
         <button
-          className="bg-[#CF0A8B] text-white px-4 py-4 rounded-full w-10 h-10 flex justify-center items-center"
+          className="bg-[#CF0A8B] text-white px-4 py-4 rounded-full w-10 h-10 flex justify-center items-center  transition-all duration-300 hover:bg-[#ff46be]"
           onClick={handleIncrease}
         >
           +
