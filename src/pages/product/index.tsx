@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import QuantitySelector from "../../components/common/quantity-products";
-import AddToCartButton from "../../components/common/buttons/add-to-cart";
+import QuantitySelector from "../../components/cart/quantity-products";
+import AddToCartButton from "../../components/cart/btn-add-to-cart/add-to-cart";
 import { useFetchProductById } from "../../hooks/use-product-by-id";
 
 export default function ProductDetails() {

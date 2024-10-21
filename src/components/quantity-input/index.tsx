@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useCartContext } from "../../../contexts/cart-context";
-import { Product } from "../../../../types/product";
+import { useCartContext } from "../../contexts/cart-context";
+import { Product } from "../../../types/product";
 
 const QuantityInput: React.FC<{ product: Product }> = ({ product }) => {
   const { cartItems, increaseQuantity, decreaseQuantity } = useCartContext();

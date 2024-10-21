@@ -1,7 +1,7 @@
 import { useCartContext } from "../../contexts/cart-context";
-import QuantityInput from "../../components/common/quantity-input";
+import QuantityInput from "../../components/quantity-input";
 import { Product } from "../../../types/product";
-import OrderSubmitButton from "../../components/common/buttons/order-submit-button";
+import OrderSubmitButton from "../../components/order-submit/order-submit-button";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 

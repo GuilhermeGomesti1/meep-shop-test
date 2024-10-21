@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useCartContext } from "../../../contexts/cart-context";
 import { Product } from "../../../../types/product";
-import CartSidebar from "../../cart-animation";
+import CartSidebar from "../cart-animation";
 
 const AddToCartButton: React.FC<{
   product: Product;

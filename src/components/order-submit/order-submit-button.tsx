@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { createOrder } from "../../../services/order-service";
-import { Product } from "../../../../types/product";
+import { createOrder } from "../../services/order-service";
+import { Product } from "../../../types/product";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 

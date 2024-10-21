@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useCartContext } from "../../contexts/cart-context";
+import { useCartContext } from "../../../contexts/cart-context";
 import { Link } from "react-router-dom";
 
 const CartSidebar: React.FC<{ isOpen: boolean; onClose: () => void }> = ({
